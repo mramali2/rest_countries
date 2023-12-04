@@ -1,9 +1,9 @@
 import Country from "./Country";
 
-const CountryList = ({countries, setButton}) => {
+const CountryList = ({countries, setButton, onButtonPress}) => {
 
     const countryComponents = countries.map((country,id) => {
-        return <Country country = {country} key={id} setButton= {setButton}/>
+        return <Country country = {country} key={id} setButton= {setButton} onButtonPress={onButtonPress}/>
     })
 
     return ( 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CountryList from "../components/CountryList";
+import VisitedCountryList from "../components/VisitedCountryList";
 
 const CountriesContainer = () => {
 
@@ -7,6 +8,8 @@ const CountriesContainer = () => {
     const [countries, setCountries] = useState([]);
 
     const [button, setButton] = useState(false);
+
+    const [visitedCountries, setVisitedCountries] = useState([]);
 
 
     useEffect (() => {
@@ -18,11 +21,32 @@ const CountriesContainer = () => {
 
         loadAllCountries();
     }, [])
+
+    const handleButtonPress = (countryVisited) => {
+
+        const updatedCountryList = countries.filter(
+            eachCountry => eachCountry !== countryVisited
+        );
+
+        const updatedVisitList = [...visitedCountries, countryVisited];
+        // updatedVisitList.push(countryVisited);
+        setVisitedCountries(updatedVisitList);
+        setCountries(updatedCountryList);
+    }
+
+
+
     
     return ( 
         <>
+        <div>
         <h1>Travel Bucket List</h1>
-        <CountryList countries={countries} setButton={setButton}/>
+        <CountryList countries={countries} setButton={()=>{}} onButtonPress={handleButtonPress}/>
+        </div>
+
+        <div>
+            <VisitedCountryList visitedCountries = {visitedCountries} setButton={() => {}} onButtonPress={handleButtonPress}/>
+        </div>
         </>
         
 

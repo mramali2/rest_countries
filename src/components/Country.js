@@ -1,8 +1,11 @@
-const Country = ({country, setButton}) => {
+const Country = ({country, setButton, onButtonPress}) => {
 
     const handleClick = () => {
-        setButton(true)
+        setButton(true);
+        onButtonPress(country);
     }
+
+    
 
     return (
         <>
