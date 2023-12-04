@@ -28,8 +28,8 @@ const CountriesContainer = () => {
             eachCountry => eachCountry !== countryVisited
         );
 
-        const updatedVisitList = [...visitedCountries, countryVisited];
-        // updatedVisitList.push(countryVisited);
+        const updatedVisitList = [...visitedCountries];
+        updatedVisitList.push(countryVisited);
         setVisitedCountries(updatedVisitList);
         setCountries(updatedCountryList);
     }
